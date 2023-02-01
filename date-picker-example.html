@@ -42,6 +42,15 @@
     aside > * { margin: 1rem; }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <!--
+    You'd just add the libraries like this... The order matters:
+    picker.js depends on jQuery, so jQuery must come first.
+    picker.date.js depends on picker.js, so picker.js must come next.
+    Then, you'll have the methods from Picker available to you, as described in the documentation:
+    https://amsul.ca/pickadate.js/
+  -->
+  <script src="pickadate.js-master/lib/picker.js"></script>
+  <script src="pickadate.js-master/lib/picker.date.js"></script>
 </head>
 <body>
   <script>
@@ -58,6 +67,7 @@
         <h1>🧛‍♀️</h1>
         <h2>Create New Vampire</h2>
         <input></input>
+        <div class='datepicker'></div>
         <button id='create'>Create</button>
         <button id='close'>Close</button>
       </aside>
@@ -65,6 +75,7 @@
       const input = modal.find('input');
       const createButton = modal.find('#create')
       const closeButton = modal.find('#close');
+      modal.find('.datepicker').pickadate();
 
 
       createButton.on('click', () => {
